@@ -66,13 +66,12 @@ class TicketControl {
         if(this.ultimosCuatro.length>4){
             this.ultimosCuatro.splice(-1,1)
         }
-        console.log('ultimos4: ',this.ultimosCuatro)
         this.grabarArchivo()
         return atenderTicket
     }
 
     getUltimosCuatro(){
-        this.ultimosCuatro
+        return this.ultimosCuatro
     }
 }
 

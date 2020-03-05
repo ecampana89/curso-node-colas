@@ -9,7 +9,6 @@ io.on('connection', (client) => {
 
     client.on('siguienteTicket', (data, callback) => {
         let siguiente = ticketControl.siguiente()
-        console.log('siguiente ticket: ', siguiente)
         callback(siguiente)
     })
 
@@ -35,12 +34,12 @@ io.on('connection', (client) => {
         callback(atenderTicket)
 
         // notificar cambios en los ultimos 4
-        // client.emit('', ()=>{
-        //
-        // })
-        
+        client.broadcast.emit('ultimosCuatro',{
+            ultimosCuatro: ticketControl.getUltimosCuatro()
+        })
+
     })
 
-    
+
 
 })

@@ -12,15 +12,12 @@ socket.on('disconnect', () => {
 })
 
 socket.on('estadoActual', function(respuesta) {
-    console.log('respuesta:', respuesta)
     label.text(respuesta.actual)
 })
 
 $('button').on('click', function () {
-    console.log('click')
 
     socket.emit('siguienteTicket', null, function (siguienteTicket) {
-        console.log('ticket: ', siguienteTicket)
         label.text(siguienteTicket)
     })
 })

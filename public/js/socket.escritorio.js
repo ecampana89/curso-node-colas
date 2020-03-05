@@ -18,7 +18,6 @@ if (!searchParams.has('escritorio')) {
 }
 
 var escritorio = searchParams.get('escritorio')
-console.log('Escritorio: ', escritorio)
 
 $('h1').text('Escritorio ' + escritorio)
 
@@ -26,13 +25,12 @@ $('button').on('click', function () {
 
     socket.emit('atenderTicket', {escritorio: escritorio},
         function (resp) {
-            if (resp=== 'No hay tickets') {
+            if (resp === 'No hay tickets') {
                 label.text(resp)
                 alert(resp)
                 return
             }
-                label.text(`Ticket ${resp.numero}`)
-                console.log(resp)
+            label.text(`Ticket ${resp.numero}`)
         })
 })
 

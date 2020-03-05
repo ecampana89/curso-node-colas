@@ -11,8 +11,8 @@ var lvlEscritorio2 = $('#lblEscritorio2')
 var lvlEscritorio3 = $('#lblEscritorio3')
 var lvlEscritorio4 = $('#lblEscritorio4')
 
-var lblTickets = [lvlTicket1,lvlTicket2,lvlTicket3,lvlTicket4]
-var lvlEscritorios = [lvlEscritorio1,lvlEscritorio2,lvlEscritorio3,lvlEscritorio4]
+var lblTickets = [ lvlTicket1, lvlTicket2, lvlTicket3, lvlTicket4 ]
+var lvlEscritorios = [ lvlEscritorio1, lvlEscritorio2, lvlEscritorio3, lvlEscritorio4 ]
 
 socket.on('connect', (client) => {
     console.log('Conectado al servidor')
@@ -24,14 +24,21 @@ socket.on('disconnect', () => {
 
 socket.on('estadoActual',
     function (data) {
-            console.log(data)
-            actualizaHTML(data.ultimosCuatro)
+        actualizaHTML(data.ultimosCuatro)
     })
 
-function actualizaHTML(ultimosCuatro){
-    for(var i =0; i>=ultimosCuatro.lenght -1 ; i++){
-        lblTickets[i].text('Ticket '+ultimosCuatro[i].numero)
-        lvlEscritorios[i].text('Escritorio '+ultimosCuatro[i].escritorio)
+socket.on('ultimosCuatro', function (data) {
+    var audio = new Audio('audio/new-ticket.mp3')
+    audio.play()
+        .then(console.log('audio play'))
+        .catch('error')
+    actualizaHTML(data.ultimosCuatro)
+})
+
+function actualizaHTML(ultimosCuatro) {
+    for (var i = 0; i <= ultimosCuatro.length - 1; i++) {
+        lblTickets[i].text('Ticket ' + ultimosCuatro[i].numero)
+        lvlEscritorios[i].text('Escritorio ' + ultimosCuatro[i].escritorio)
     }
 }
 
