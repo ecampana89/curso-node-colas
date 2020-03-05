@@ -1,7 +1,7 @@
-#### **Notas:**
+# **Notas:**
 
-Curso de node colas con sockets, back front y sonido
+##### Curso de node colas con sockets, back front y sonido
 
-Recuerden que deben de reconstruir los módulos de node con el comando
+##### Recuerden que deben de reconstruir los módulos de node con el comando
 
-`npm install`
+##### `npm install`
